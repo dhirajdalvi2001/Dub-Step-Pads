@@ -26,11 +26,11 @@ function startMetronome() {
 
     console.log("Playing metronome at BPM:", interval);
     
-    new Audio('./metronome.mp3').play(); // Play immediately
+    new Audio('https://github.com/dhirajdalvi2001/Dub-Step-Pads/blob/main/sounds/metronome.mp3?raw=true').play(); // Play immediately
 
     intervalId = setInterval(() => {
         console.log("Metronome Tick", 60000 / interval);
-        new Audio('./metronome.mp3').play();
+        new Audio('https://github.com/dhirajdalvi2001/Dub-Step-Pads/blob/main/sounds/metronome.mp3?raw=true').play();
     }, 60000 / interval); // Convert BPM to milliseconds per beat
 }
 
