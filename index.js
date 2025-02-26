@@ -1,7 +1,11 @@
 const tempo = document.getElementById("tempo-value");
 
-function playAudio(url) {
-    new Audio(url).play();
+async function playAudio(url) {
+    const response = await fetch(url);
+    const blob = await response.blob();
+    const objectURL = URL.createObjectURL(blob);
+    const audio = new Audio(objectURL);
+    audio.play();
 }
 
 function increment() {
@@ -14,7 +18,7 @@ function decrement() {
 
 let intervalId = null; 
 
-function startMetronome() {
+async function startMetronome() {
     clearInterval(intervalId); // Clear any previous interval first
 
     const interval = parseInt(tempo.value); // Get the tempo from input
@@ -24,13 +28,17 @@ function startMetronome() {
         return; // Stop execution if tempo is not valid
     }
 
-    console.log("Playing metronome at BPM:", interval);
+    const metronomeURL = 'https://github.com/dhirajdalvi2001/Dub-Step-Pads/blob/main/sounds/metronome.mp3?raw=true'
+
+    const response = await fetch(metronomeURL);
+    const blob = await response.blob();
+    const objectURL = URL.createObjectURL(blob);
+    const audio = new Audio(objectURL);
     
-    new Audio('https://github.com/dhirajdalvi2001/Dub-Step-Pads/blob/main/sounds/metronome.mp3?raw=true').play(); // Play immediately
+    audio.play(); // Play immediately
 
     intervalId = setInterval(() => {
-        console.log("Metronome Tick", 60000 / interval);
-        new Audio('https://github.com/dhirajdalvi2001/Dub-Step-Pads/blob/main/sounds/metronome.mp3?raw=true').play();
+        audio.play();
     }, 60000 / interval); // Convert BPM to milliseconds per beat
 }
 
@@ -38,3 +46,5 @@ function stopMetronome() {
     clearInterval(intervalId);
     intervalId = null;
 }
+
+tempo.addEventListener('change', startMetronome())
