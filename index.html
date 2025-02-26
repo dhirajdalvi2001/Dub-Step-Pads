@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/c112a563d2.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="index.css">
+    <title>Dub Step Pads</title>
+</head>
+<body>
+    <div class="tempo-container">
+        <button onclick="increment()" class="tempo-button">+</button>
+        <input value="120" id="tempo-value" />
+        <button onclick="decrement()" class="tempo-button">-</button>
+    </div>
+    <div class="buttons">
+        <button class="sound-buttons" onclick="startMetronome()"><i class="fa fa-solid fa-play fa-2x"></i></button>
+        <button class="sound-buttons" onclick="stopMetronome()"><i class="fa fa-solid fa-stop fa-2x"></i></button>
+    </div>
+    <div class="pads">
+        <div class="pad" id="808" onclick="playAudio('./sounds/808.wav')">
+            <p>808</p>
+        </div>
+        <div class="pad" id="clap" onclick="playAudio('./sounds/clap.wav')">
+            <p>Clap</p>
+        </div>
+        <div class="pad" id="crash" onclick="playAudio('./sounds/crash.wav')">
+            <p>Crash</p>
+        </div>
+        <div class="pad" id="drum" onclick="playAudio('./sounds/drum.wav')">
+            <p>Drum</p>
+        </div>
+        <div class="pad" id="hi-hat" onclick="playAudio('./sounds/hihat.wav')">
+            <p>Hi-hat</p>
+        </div>
+        <div class="pad" id="snare" onclick="playAudio('./sounds/snare.wav')">
+            <p>Snare</p>
+        </div>
+    </div>
+    <script src="./index.js" />
+</body>
+</html>
